@@ -495,6 +495,11 @@ body:not(.menu) #bm,body:not(.menu) #bs{flex:none!important;display:flex!importa
 body:not(.menu) #bx{flex:none!important;display:flex!important;align-items:center!important;justify-content:center!important;width:84px!important;height:84px!important;margin:0!important;padding:0!important;border:none!important;border-radius:22px!important;background:#7b4fd0!important;box-shadow:0 6px 0 #4b2b8a!important;color:#f3dcff!important}
 body:not(.menu) #bx b{font-family:"Noto Sans JP",sans-serif!important;font-size:50px!important;font-weight:400!important;line-height:1!important;color:#f3dcff!important;text-shadow:none!important}
 body:not(.menu) #bx:disabled{opacity:.5}
+
+/* ajustes: sem mostrador de texto, botões mais juntos, crédito na base */
+body:not(.menu) #toast{display:none!important}
+body:not(.menu) .row4{justify-content:center!important;gap:14px!important;padding:0!important}
+body:not(.menu) .credit{position:absolute!important;left:0!important;right:0!important;bottom:8px!important;margin:0!important;text-align:center!important;font-size:10px!important;font-weight:400!important;letter-spacing:.3px!important;color:rgba(255,255,255,.55)!important;font-family:"Nunito",sans-serif!important;pointer-events:none!important}
 </style>
 </head>
 <body class="menu">
@@ -523,9 +528,10 @@ body:not(.menu) #bx:disabled{opacity:.5}
     <button type="button" id="bs" aria-label="Som"></button>
   </div>
   <div id="hudhide" hidden>
-    <span id="lv">1</span><span id="gd">—</span><b id="gn">0/0</b><b id="best">0</b><b id="mchain">0</b>
+    <span id="lv">1</span><span id="hc">0</span><span id="xc">∞</span><span id="gd">—</span><b id="gn">0/0</b><b id="best">0</b><b id="mchain">0</b>
     <button type="button" id="bh" aria-label="Dica"></button><button type="button" id="nb" aria-label="Reiniciar nível"></button><button type="button" id="bt"></button>
   </div>
+  <p class="credit">© Titi e Mel 2025</p>
 </div>
 
 <div id="kcard" aria-hidden="true"></div>
@@ -671,9 +677,9 @@ function sfx(k,n){if(!AC||!sfxOn)return;const t=AC.currentTime;
   else if(k==="boom"){pedraGrande(0.9,t,180);pebble(0.6,true)}
 }
 function prefs(){
-  $("bm").innerHTML=ICO.music+" "+(musicOn?"On":"Off");
+  $("bm").innerHTML=ICO.music;
   $("bm").className=musicOn?"":"off";
-  $("bs").innerHTML=ICO.sound+" "+(sfxOn?"On":"Off");
+  $("bs").innerHTML=ICO.sound;
   $("bs").className=sfxOn?"":"off";
   $("cbm").innerHTML=$("bm").innerHTML;$("cbm").className=$("bm").className;$("cbs").innerHTML=$("bs").innerHTML;$("cbs").className=$("bs").className;
   if(AC){mg.gain.value=musicOn?0.45:0; sg.gain.value=sfxOn?0.55:0}
